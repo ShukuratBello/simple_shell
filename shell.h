@@ -23,4 +23,12 @@ void prompt(void);
 int own_cmd_handler(char **parsed);
 void print_env(char **env);
 int execute(char **args);
+
+/* helper_string */
+int _strcmp(char *s1, char *s2);
+unsigned int _strlen(char *s);
+char *_strcpy(char *dest, char *src);
+char *_strcat(char *dest, char *src);
+int _atoi(char *s);
+
 #endif /* SHELL_h */
