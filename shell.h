@@ -17,5 +17,10 @@
 
 /* Shell Initialization */
 int main(int ac, char **av, char **env);
+void prompt(void);
 
+/* Run Shell */
+int own_cmd_handler(char **parsed);
+void print_env(char **env);
+int execute(char **args);
 #endif /* SHELL_h */

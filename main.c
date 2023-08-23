@@ -45,3 +45,14 @@ int main(int ac, char **av, char **env)
 	return (EXIT_SUCCESS);
 }
 
+/**
+* prompt - prints $ to the terminal
+* Return: 0
+*/
+void prompt(void)
+{
+	if ((isatty(STDIN_FILENO) == 1) && (isatty(STDOUT_FILENO) == 1))
+		flags.interactive = 1;
+	if (flags.interactive)
+		write(STDERR_FILENO, "$ ", 2);
+}
