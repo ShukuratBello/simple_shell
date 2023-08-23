@@ -71,3 +71,49 @@ void print_env(char **env)
 		i++;
 	}
 }
+
+/**
+ * _getPATH - A function to gets the full value from.
+ * enviromental variable PATH.
+ * @env: The pointer to enviromental variables.
+ * Return: All tokenized pathways for commands.
+ */
+char **_getPATH(char **env)
+{
+	char *pathvalue = NULL, **pathways = NULL;
+	unsigned int i = 0;
+
+	pathvalue = strtok(env[i], "=");
+	while (env[i])
+	{
+		if (_strcmp(pathvalue, "PATH"))
+		{
+			pathvalue = strtok(NULL, "\n");
+			pathways = tokening(pathvalue, ":");
+			return (pathways);
+		}
+		i++;
+		pathvalue = strtok(env[i], "=");
+	}
+	return (NULL);
+}
+
+/**
+ * msgerror - A function that prints message not found.
+ * @name: The name of the shell.
+ * @cicles: Number of cicles.
+ * @command: The pointer to tokenized command.
+ * Return: Nothing.
+ */
+void msgerror(char *name, int cicles, char **command)
+{
+	char c;
+
+	c = cicles + '0';
+	write(STDOUT_FILENO, name, _strlen(name));
+	write(STDOUT_FILENO, ": ", 2);
+	write(STDOUT_FILENO, &c, 1);
+	write(STDOUT_FILENO, ": ", 2);
+	write(STDOUT_FILENO, command[0], _strlen(command[0]));
+	write(STDOUT_FILENO, ": not found\n", 12);
+}
