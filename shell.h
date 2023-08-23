@@ -15,14 +15,18 @@
 #define TOK_BUFSIZE 64
 #define TOK_DELIM " \t\r\n\a"
 
-/* Shell Initialization */
+/* Run Shell */
 int main(int ac, char **av, char **env);
 void prompt(void);
+void handle_signal(int num);
+void _EOF(char *buffer);
+void shell_exit(char **command);
 
-/* Run Shell */
-int own_cmd_handler(char **parsed);
 void print_env(char **env);
+int own_cmd_handler(char **parsed);
 int execute(char **args);
+
+
 
 /* helper_string */
 int _strcmp(char *s1, char *s2);
@@ -31,4 +35,4 @@ char *_strcpy(char *dest, char *src);
 char *_strcat(char *dest, char *src);
 int _atoi(char *s);
 
-#endif /* SHELL_h */
+#endif /* SHELL_H */
