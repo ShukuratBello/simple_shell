@@ -16,16 +16,12 @@
 #define TOK_DELIM " \t\r\n\a"
 
 /* Run Shell */
-int main(int ac, char **av, char **env);
+int main(int ac, char **av, char **envp[]);
 void prompt(void);
-void handle_signal(int num);
-void _EOF(char *buffer);
-void shell_exit(char **command);
-
-void print_env(char **env);
-int own_cmd_handler(char **parsed);
+int launch(char **args);
+void print_env(void);
+int own_cmd_handler(char **parsed)
 int execute(char **args);
-
 
 
 /* helper_string */
